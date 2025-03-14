@@ -4,11 +4,19 @@
 
 @layer utilities {
   .gradient-bg {
+    @apply fixed inset-0 min-h-screen w-full;
     background: 
       radial-gradient(circle at 0% 0%, hsl(var(--primary) / 0.15), transparent 50%),
       radial-gradient(circle at 100% 0%, hsl(var(--accent) / 0.1), transparent 50%),
       radial-gradient(circle at 100% 100%, hsl(var(--primary) / 0.1), transparent 50%),
-      radial-gradient(circle at 0% 100%, hsl(var(--accent) / 0.15), transparent 50%);
+      radial-gradient(circle at 0% 100%, hsl(var(--accent) / 0.15), transparent 50%),
+      hsl(var(--background));
+    background-attachment: fixed;
+    background-size: 100% 100%;
+  }
+  
+  .content-container {
+    @apply relative z-10;
   }
   
   .glass {
