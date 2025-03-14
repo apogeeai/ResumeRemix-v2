@@ -4,100 +4,111 @@ import { Card } from '@/components/ui/card';
 
 export default function OptimizePage() {
   return (
-    <div className="container mx-auto px-4 py-8 md:py-12 gradient-bg min-h-screen">
-      <div className="max-w-3xl mx-auto space-y-8">
-        {/* Hero Section */}
-        <section className="text-center space-y-6 py-8">
-          <h2 className="text-3xl md:text-4xl font-bold font-roboto text-glow">
-            Tailor Your Resume with AI
-          </h2>
-          <p className="text-muted-foreground text-lg">
-            Upload your resume and job description to get a perfectly tailored
-            version that matches the role.
-          </p>
-        </section>
+    <div className="container mx-auto px-4 py-8 md:py-12">
+      {/* Header */}
+      <div className="max-w-4xl mx-auto text-center mb-12">
+        <h1 className="text-4xl md:text-5xl font-bold mb-4">
+          Tailor Your <span className="text-primary">Perfect Resume</span>
+        </h1>
+        <p className="text-lg text-muted-foreground">
+          Upload your resume, enter a job description, and let AI optimize your application to
+          stand out from the crowd.
+        </p>
+      </div>
 
-        {/* Upload Section */}
-        <Card className="p-6 space-y-6 glass border border-primary/20 hover-glow">
+      {/* Progress Steps */}
+      <div className="max-w-4xl mx-auto mb-12">
+        <div className="flex justify-between items-center">
+          <div className="flex items-center">
+            <div className="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-semibold">
+              1
+            </div>
+            <span className="ml-3 font-medium">Upload Resume</span>
+          </div>
+          <div className="flex-1 mx-4 border-t-2 border-gray-200"></div>
+          <div className="flex items-center">
+            <div className="w-10 h-10 rounded-full bg-gray-200 text-gray-600 flex items-center justify-center font-semibold">
+              2
+            </div>
+            <span className="ml-3 font-medium text-gray-600">Enter Job Details</span>
+          </div>
+          <div className="flex-1 mx-4 border-t-2 border-gray-200"></div>
+          <div className="flex items-center">
+            <div className="w-10 h-10 rounded-full bg-gray-200 text-gray-600 flex items-center justify-center font-semibold">
+              3
+            </div>
+            <span className="ml-3 font-medium text-gray-600">Review & Download</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Main Content */}
+      <div className="max-w-6xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-8">
+          {/* Left Column - Get Started */}
           <div className="space-y-6">
-            <div className="border-2 border-dashed rounded-lg p-8 text-center space-y-4 bg-background/40 hover:bg-background/60 transition-colors">
-              <div className="mx-auto w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
-                <Upload className="h-6 w-6 text-primary" />
-              </div>
-              <div>
-                <h3 className="text-lg font-semibold font-roboto">Upload Your Resume</h3>
-                <p className="text-sm text-muted-foreground mt-1">
-                  Drag and drop your PDF resume here, or click to browse
-                </p>
-              </div>
-              <Button>Select PDF File</Button>
-            </div>
+            <h2 className="text-2xl font-bold mb-6">Get Started</h2>
             
-            <div className="relative">
-              <div className="absolute inset-0 flex items-center">
-                <span className="w-full border-t" />
+            {/* Upload Resume Section */}
+            <Card className="p-6">
+              <h3 className="text-lg font-semibold mb-4">Upload your resume</h3>
+              <div className="border-2 border-dashed rounded-lg p-6 text-center space-y-4 cursor-pointer hover:bg-gray-50 transition-colors">
+                <div className="mx-auto w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+                  <Upload className="h-6 w-6 text-primary" />
+                </div>
+                <div>
+                  <p className="text-sm text-muted-foreground">
+                    Click to upload or drag and drop
+                  </p>
+                  <p className="text-xs text-muted-foreground mt-1">
+                    PDF (MAX. 5MB)
+                  </p>
+                </div>
               </div>
-              <div className="relative flex justify-center text-xs uppercase">
-                <span className="bg-background px-2 text-muted-foreground">
-                  or paste your resume
-                </span>
+
+              <div className="relative my-6">
+                <div className="absolute inset-0 flex items-center">
+                  <span className="w-full border-t" />
+                </div>
+                <div className="relative flex justify-center text-xs uppercase">
+                  <span className="bg-background px-2 text-muted-foreground">
+                    or paste your resume
+                  </span>
+                </div>
               </div>
-            </div>
-            
-            <div className="space-y-2">
-              <h3 className="text-lg font-semibold font-roboto">Paste Your Resume</h3>
-              <p className="text-sm text-muted-foreground">
-                Copy and paste your resume text here
-              </p>
+
               <textarea
-                className="w-full min-h-[200px] p-4 rounded-md border bg-background/40 resize-y focus:bg-background/60 transition-colors"
-                placeholder="Paste your resume content here..."
+                className="w-full min-h-[200px] p-4 rounded-md border resize-y"
+                placeholder="Paste your resume text here..."
               />
-            </div>
+            </Card>
+
+            {/* Job Description Section */}
+            <Card className="p-6">
+              <h3 className="text-lg font-semibold mb-4">Paste job description</h3>
+              <textarea
+                className="w-full min-h-[200px] p-4 rounded-md border resize-y"
+                placeholder="Paste the job description here..."
+              />
+              <Button className="w-full mt-4" size="lg">
+                Optimize Resume
+              </Button>
+            </Card>
           </div>
 
-          <div className="space-y-4">
-            <h3 className="text-lg font-semibold font-roboto">Job Description</h3>
-            <textarea
-              className="w-full min-h-[200px] p-4 rounded-md border bg-background/40 resize-y focus:bg-background/60 transition-colors"
-              placeholder="Paste the job description here... We'll help you tailor your resume to match!"
-            />
-            <Button className="w-full" size="lg">
-              Optimize Resume
-            </Button>
-          </div>
-        </Card>
-
-        {/* Features Section */}
-        <section className="grid md:grid-cols-3 gap-6">
-          {[
-            {
-              title: 'ATS-Friendly',
-              description:
-                'Ensures your resume passes Applicant Tracking Systems',
-            },
-            {
-              title: 'AI-Powered',
-              description:
-                'Uses advanced AI to match your experience with job requirements',
-            },
-            {
-              title: 'Instant Results',
-              description:
-                'Get your optimized resume and cover letter in seconds',
-            },
-          ].map((feature) => (
-            <Card
-              key={feature.title}
-              className="p-6 text-center glass border-primary/20 hover-glow"
-            >
-              <h3 className="font-semibold mb-2 font-roboto">{feature.title}</h3>
-              <p className="text-sm text-muted-foreground">
-                {feature.description}
+          {/* Right Column - Preview */}
+          <div>
+            <h2 className="text-2xl font-bold mb-6">Preview</h2>
+            <Card className="p-6 h-[calc(100%-4rem)] flex flex-col items-center justify-center text-center">
+              <FileText className="h-16 w-16 text-gray-300 mb-4" />
+              <h3 className="text-lg font-medium text-gray-600">No Resume Uploaded</h3>
+              <p className="text-sm text-muted-foreground mt-2">
+                Upload your resume and enter a job description to
+                see the optimized version here.
               </p>
             </Card>
-          ))}
-        </section>
+          </div>
+        </div>
       </div>
     </div>
   );
