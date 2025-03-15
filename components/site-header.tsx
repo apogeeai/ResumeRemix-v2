@@ -16,7 +16,7 @@ export function SiteHeader() {
           </Link>
         </div>
         <nav className="hidden md:flex items-center gap-6">
-          <Link href="/optimize" className="text-muted-foreground hover:text-foreground transition-colors">
+          <Link href="/generate" className="text-muted-foreground hover:text-foreground transition-colors">
             Optimize Resume
           </Link>
           <Link href="#features" className="text-muted-foreground hover:text-foreground transition-colors">
@@ -29,7 +29,7 @@ export function SiteHeader() {
         <div className="flex items-center gap-4">
           <ThemeToggle />
           <Button asChild>
-            <Link href="/optimize">
+            <Link href="/generate">
               Get Started
             </Link>
           </Button>

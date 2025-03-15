@@ -32,7 +32,7 @@ export default function Home() {
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <Button size="lg" asChild>
-                    <Link href="/optimize" className="gap-2">
+                    <Link href="/generate" className="gap-2">
                       Try for Free <ArrowRight className="h-4 w-4 animate-pulse" />
                     </Link>
                   </Button>
@@ -45,41 +45,55 @@ export default function Home() {
           </section>
 
           {/* Features Section */}
-          <section id="features" className="py-20 bg-[#0e0d12]">
-            <div className="container mx-auto px-4">
+          <section id="features" className="py-20 relative">
+            <div className="absolute inset-0 bg-gradient-to-r from-[#dfc4f1]/20 via-[#dfc4f1]/30 to-[#dfc4f1]/20 backdrop-blur-[2px] rounded-3xl mx-4 lg:mx-8 border border-[#dfc4f1]/30" />
+            <div className="container mx-auto px-4 relative">
               <div className="text-center mb-16">
-                <h2 className="text-3xl md:text-4xl font-bold mb-4 font-roboto text-white">
-                  Why Choose ResumeRemix?
+                <h2 className="text-3xl md:text-4xl font-bold mb-4 font-roboto">
+                  Why Choose ResumeRemix
                 </h2>
                 <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-                  Our AI-powered platform helps you create the perfect resume for every job application.
+                  Our AI-powered platform offers unique advantages to help you land your dream job.
                 </p>
               </div>
-              <div className="grid md:grid-cols-3 gap-8">
+              <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
                 {[
                   {
-                    icon: Target,
                     title: 'ATS-Optimized',
-                    description: 'Ensure your resume passes through Applicant Tracking Systems with flying colors.',
+                    description:
+                      'Our AI ensures your resume passes through Applicant Tracking Systems with flying colors.',
+                    icon: Target,
                   },
                   {
-                    icon: Sparkles,
-                    title: 'AI-Powered Tailoring',
-                    description: 'Our advanced AI matches your experience with job requirements for maximum impact.',
-                  },
-                  {
+                    title: 'Tailored Content',
+                    description:
+                      'Get personalized resume and cover letter content that matches job requirements perfectly.',
                     icon: FileText,
-                    title: 'Perfect Formatting',
-                    description: 'Professional templates and perfect formatting every time, no design skills needed.',
                   },
-                ].map((feature) => (
-                  <Card key={feature.title} className="p-6 glass border-primary/20">
-                    <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
-                      <feature.icon className="h-6 w-6 text-primary" />
+                  {
+                    title: 'Instant Results',
+                    description:
+                      'Generate optimized resumes and cover letters in seconds, not hours.',
+                    icon: Sparkles,
+                  },
+                ].map((feature, index) => (
+                  <div
+                    key={index}
+                    className="relative group p-6 bg-white/50 dark:bg-background/50 backdrop-blur-sm border rounded-xl transition-all hover:shadow-lg hover:-translate-y-1"
+                  >
+                    <div className="absolute inset-0 rounded-xl bg-gradient-to-b from-primary/10 to-accent/10 opacity-0 group-hover:opacity-100 transition-opacity" />
+                    <div className="relative">
+                      <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4">
+                        <feature.icon className="h-6 w-6 text-primary" />
+                      </div>
+                      <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
+                      <p className="text-muted-foreground">{feature.description}</p>
+                      <div className="mt-4 flex items-center text-primary">
+                        <span className="text-sm font-medium">Learn more</span>
+                        <CheckCircle2 className="h-4 w-4 ml-2" />
+                      </div>
                     </div>
-                    <h3 className="text-xl font-semibold mb-2 font-roboto">{feature.title}</h3>
-                    <p className="text-muted-foreground">{feature.description}</p>
-                  </Card>
+                  </div>
                 ))}
               </div>
             </div>

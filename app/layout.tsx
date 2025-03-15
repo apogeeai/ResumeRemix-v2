@@ -4,6 +4,7 @@ import { Roboto, Open_Sans } from 'next/font/google';
 import { ThemeProvider } from '@/components/theme-provider';
 import { cn } from '@/lib/utils';
 import { SiteHeader } from '@/components/site-header';
+import { Toaster } from '@/components/ui/toaster';
 
 const roboto = Roboto({
   subsets: ['latin'],
@@ -33,6 +34,7 @@ export default function RootLayout({
           <SiteHeader />
           {children}
         </ThemeProvider>
+        <Toaster />
       </body>
     </html>
   );
