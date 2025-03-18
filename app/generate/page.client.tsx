@@ -24,17 +24,34 @@ interface ResumeAnalysis {
   technicalSkillsAnalysis: string;
   experienceMatch: string;
   educationAndCertifications: string;
-  recommendedChanges?: RecommendedChange[];
+}
+
+interface JobAnalysis {
+  keyRequirements: string[];
+  cultureFitSignals: string[];
+  idealCandidateProfile: string;
+  missingElements: string[];
+}
+
+interface ATSOptimization {
+  missingKeywords: string[];
+  keywordContext: string;
+  suggestedMetrics: string[];
+  narrativeGaps: string;
+  humanReaderTips: string[];
 }
 
 interface GenerationResult {
   optimizedResume: {
     content: string;
     seniorityLevel: string;
-    atsScore?: number;
-    keywordMatch?: string[];
-    improvements?: string[];
-    analysis?: ResumeAnalysis;
+    atsScore: number;
+    keywordMatch: string[];
+    analysis: ResumeAnalysis;
+    jobAnalysis: JobAnalysis;
+    recommendedChanges: RecommendedChange[];
+    atsOptimization: ATSOptimization;
+    improvements: string[];
   };
   coverLetter: string;
   fromCache?: boolean;
@@ -169,7 +186,7 @@ export default function GeneratorClient() {
       const url = window.URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
-      a.download = `${type === 'resume' ? 'optimized-resume' : 'cover-letter'}.docx`;
+      a.download = `${type === 'resume' ? 'Optimized-Resume' : 'Cover-Letter'}.docx`;
       document.body.appendChild(a);
       a.click();
       window.URL.revokeObjectURL(url);
@@ -338,7 +355,89 @@ export default function GeneratorClient() {
                                   {result.optimizedResume.atsScore || 'N/A'}%
                                 </span>
                               </div>
-                              
+
+                              {/* Job Analysis Section */}
+                              <div className="border-t pt-4 mt-4">
+                                <h5 className="text-sm font-medium mb-3">Job Requirements Analysis</h5>
+                                <div className="space-y-4">
+                                  <div>
+                                    <h6 className="text-sm font-medium mb-2">Key Requirements:</h6>
+                                    <ul className="text-sm list-disc list-inside space-y-1">
+                                      {result.optimizedResume.jobAnalysis?.keyRequirements.map((req, index) => (
+                                        <li key={index} className="text-muted-foreground">{req}</li>
+                                      ))}
+                                    </ul>
+                                  </div>
+                                  <div>
+                                    <h6 className="text-sm font-medium mb-2">Culture Fit Signals:</h6>
+                                    <ul className="text-sm list-disc list-inside space-y-1">
+                                      {result.optimizedResume.jobAnalysis?.cultureFitSignals.map((signal, index) => (
+                                        <li key={index} className="text-muted-foreground">{signal}</li>
+                                      ))}
+                                    </ul>
+                                  </div>
+                                  <div>
+                                    <h6 className="text-sm font-medium mb-2">Ideal Candidate Profile:</h6>
+                                    <p className="text-sm text-muted-foreground">
+                                      {result.optimizedResume.jobAnalysis?.idealCandidateProfile}
+                                    </p>
+                                  </div>
+                                  <div>
+                                    <h6 className="text-sm font-medium mb-2">Missing Elements:</h6>
+                                    <ul className="text-sm list-disc list-inside space-y-1">
+                                      {result.optimizedResume.jobAnalysis?.missingElements.map((element, index) => (
+                                        <li key={index} className="text-muted-foreground">{element}</li>
+                                      ))}
+                                    </ul>
+                                  </div>
+                                </div>
+                              </div>
+
+                              {/* ATS Optimization Section */}
+                              <div className="border-t pt-4 mt-4">
+                                <h5 className="text-sm font-medium mb-3">ATS & Human Reader Optimization</h5>
+                                <div className="space-y-4">
+                                  <div>
+                                    <h6 className="text-sm font-medium mb-2">Missing Keywords:</h6>
+                                    <div className="flex flex-wrap gap-2">
+                                      {result.optimizedResume.atsOptimization?.missingKeywords.map((keyword, index) => (
+                                        <span key={index} className="text-xs bg-yellow-500/10 text-yellow-600 px-2 py-1 rounded-full">
+                                          {keyword}
+                                        </span>
+                                      ))}
+                                    </div>
+                                  </div>
+                                  <div>
+                                    <h6 className="text-sm font-medium mb-2">Keyword Implementation Context:</h6>
+                                    <p className="text-sm text-muted-foreground">
+                                      {result.optimizedResume.atsOptimization?.keywordContext}
+                                    </p>
+                                  </div>
+                                  <div>
+                                    <h6 className="text-sm font-medium mb-2">Suggested Metrics:</h6>
+                                    <ul className="text-sm list-disc list-inside space-y-1">
+                                      {result.optimizedResume.atsOptimization?.suggestedMetrics.map((metric, index) => (
+                                        <li key={index} className="text-muted-foreground">{metric}</li>
+                                      ))}
+                                    </ul>
+                                  </div>
+                                  <div>
+                                    <h6 className="text-sm font-medium mb-2">Narrative Gaps:</h6>
+                                    <p className="text-sm text-muted-foreground">
+                                      {result.optimizedResume.atsOptimization?.narrativeGaps}
+                                    </p>
+                                  </div>
+                                  <div>
+                                    <h6 className="text-sm font-medium mb-2">Human Reader Tips:</h6>
+                                    <ul className="text-sm list-disc list-inside space-y-1">
+                                      {result.optimizedResume.atsOptimization?.humanReaderTips.map((tip, index) => (
+                                        <li key={index} className="text-muted-foreground">{tip}</li>
+                                      ))}
+                                    </ul>
+                                  </div>
+                                </div>
+                              </div>
+
                               {result.optimizedResume.keywordMatch && (
                                 <div>
                                   <h5 className="text-sm font-medium mb-2">Key Skills Matched:</h5>
@@ -405,11 +504,11 @@ export default function GeneratorClient() {
                                 </div>
                               )}
 
-                              {result.optimizedResume.analysis?.recommendedChanges && (
+                              {result.optimizedResume.recommendedChanges && (
                                 <div className="border-t pt-4 mt-4">
                                   <h5 className="text-sm font-medium mb-3">Recommended Changes:</h5>
                                   <div className="space-y-4">
-                                    {result.optimizedResume.analysis.recommendedChanges.map((change, index) => (
+                                    {result.optimizedResume.recommendedChanges.map((change, index) => (
                                       <div key={index} className="bg-background/50 p-3 rounded-lg">
                                         <div className="font-medium text-sm mb-1">{change.section}</div>
                                         <div className="text-sm text-muted-foreground mb-2">

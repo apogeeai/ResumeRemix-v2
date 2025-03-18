@@ -46,7 +46,6 @@ export default function Home() {
 
           {/* Features Section */}
           <section id="features" className="py-20 relative">
-            <div className="absolute inset-0 bg-gradient-to-r from-[#dfc4f1]/20 via-[#dfc4f1]/30 to-[#dfc4f1]/20 backdrop-blur-[2px] rounded-3xl mx-4 lg:mx-8 border border-[#dfc4f1]/30" />
             <div className="container mx-auto px-4 relative">
               <div className="text-center mb-16">
                 <h2 className="text-3xl md:text-4xl font-bold mb-4 font-roboto">

@@ -12,8 +12,24 @@ export async function POST(req: Request) {
       );
     }
 
-    // Create a new document
+    // Create a new document with Aptos font
     const doc = new Document({
+      styles: {
+        default: {
+          document: {
+            run: {
+              font: "Aptos",
+              size: 24, // 12pt
+            },
+            paragraph: {
+              spacing: {
+                after: 200,
+                line: 360,
+              },
+            },
+          },
+        },
+      },
       sections: [{
         properties: {},
         children: content.split('\n').map((line: string) => 
@@ -21,6 +37,7 @@ export async function POST(req: Request) {
             children: [
               new TextRun({
                 text: line,
+                font: "Aptos",
                 size: 24, // 12pt
               }),
             ],
@@ -35,7 +52,7 @@ export async function POST(req: Request) {
     // Create response with appropriate headers
     const response = new NextResponse(buffer);
     response.headers.set('Content-Type', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document');
-    response.headers.set('Content-Disposition', `attachment; filename="${type === 'resume' ? 'optimized-resume' : 'cover-letter'}.docx"`);
+    response.headers.set('Content-Disposition', `attachment; filename="${type === 'resume' ? 'optimized-resume' : 'Cover-Letter'}.docx"`);
 
     return response;
   } catch (error) {
