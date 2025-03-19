@@ -6,59 +6,49 @@ export async function POST(req: Request) {
     const { content, type } = await req.json();
 
     if (!content) {
-      return NextResponse.json(
-        { error: 'No content provided' },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: 'Content is required' }, { status: 400 });
     }
 
-    // Create a new document with Aptos font
+    // Create a new document
     const doc = new Document({
-      styles: {
-        default: {
-          document: {
-            run: {
-              font: "Aptos",
-              size: 24, // 12pt
-            },
-            paragraph: {
-              spacing: {
-                after: 200,
-                line: 360,
-              },
-            },
-          },
-        },
-      },
       sections: [{
         properties: {},
-        children: content.split('\n').map((line: string) => 
+        children: [
           new Paragraph({
             children: [
               new TextRun({
-                text: line,
-                font: "Aptos",
+                text: content,
                 size: 24, // 12pt
-              }),
+                font: 'Aptos'
+              })
             ],
+            spacing: {
+              line: 360, // 1.5 line spacing
+              before: 200, // Space before paragraph
+              after: 200 // Space after paragraph
+            }
           })
-        ),
-      }],
+        ]
+      }]
     });
 
-    // Generate buffer
+    // Generate the document buffer
     const buffer = await Packer.toBuffer(doc);
 
-    // Create response with appropriate headers
-    const response = new NextResponse(buffer);
-    response.headers.set('Content-Type', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document');
-    response.headers.set('Content-Disposition', `attachment; filename="${type === 'resume' ? 'optimized-resume' : 'Cover-Letter'}.docx"`);
+    // Set the appropriate filename
+    const filename = type === 'resume' ? 'Optimized-Resume.docx' : 'Cover-Letter.docx';
 
-    return response;
-  } catch (error) {
+    // Return the document with proper headers
+    return new NextResponse(buffer, {
+      headers: {
+        'Content-Type': 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+        'Content-Disposition': `attachment; filename="${filename}"`,
+      },
+    });
+  } catch (error: any) {
     console.error('Error generating document:', error);
     return NextResponse.json(
-      { error: 'Failed to generate document' },
+      { error: `Failed to generate document: ${error.message}` },
       { status: 500 }
     );
   }

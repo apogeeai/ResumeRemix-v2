@@ -177,34 +177,38 @@ Job Description: "${jobDescription}"`;
 
       // Generate cover letter using GPT-3.5 for cost efficiency
       console.log(`[${new Date().toISOString()}] Generating cover letter...`);
-      const coverLetterPrompt = `Write a concise, 3-paragraph professional cover letter with clear paragraph breaks:
+      const coverLetterPrompt = `Write a professional cover letter (approximately 150 words) with clear paragraph breaks:
 
-1. Opening (2-3 sentences):
+1. Opening (3-4 sentences):
+   • Start with "Dear Hiring Manager,\\n"
    • Show genuine interest in the role
    • Mention the position
-   • Brief qualification highlight
+   • Brief qualification highlight and value proposition
 
-2. Body (3-4 sentences):
-   • Focus on 1-2 key achievements with metrics
+2. Body (4-5 sentences):
+   • Focus on 2-3 key achievements with specific metrics
    • Connect your experience to their needs
+   • Demonstrate understanding of company goals
    • Use keywords from: "${jobDescription}"
 
-3. Closing (2 sentences):
+3. Closing (2-3 sentences):
    • Express enthusiasm
-   • Clear call to action
+   • Strong call to action
+   • Mention availability for interview
 
 Guidelines:
-• Add single line break between paragraphs
-• Keep it concise and impactful
+• Use single line break (\\n) between paragraphs
+• Keep it impactful and engaging
 • Include specific metrics from resume
 • Use natural, conversational tone
 • Incorporate personal voice
+• Target 150 words total
 • End with signature block
 
 Format as JSON:
 {
   "coverLetter": {
-    "content": "First paragraph\\nSecond paragraph\\nThird paragraph\\n\\nSincerely,\\nAdam M. Carfagna"
+    "content": "Dear Hiring Manager,\\n\\nFirst paragraph\\nSecond paragraph\\nThird paragraph\\n\\nSincerely,\\nAdam M. Carfagna"
   }
 }
 
@@ -216,7 +220,7 @@ Key experience to highlight:
         messages: [
           {
             role: "system",
-            content: "You are an expert cover letter writer. Create personalized, natural-sounding content with clear paragraph breaks. Use '\\n\\n' for paragraph separation. Vary sentence structures and incorporate specific details from the user's experience. IMPORTANT: You must respond with ONLY valid JSON - no additional text, no markdown, no explanations.",
+            content: "You are an expert cover letter writer. Create personalized, natural-sounding content with clear paragraph breaks. Use '\\n' for paragraph separation. Vary sentence structures and incorporate specific details from the user's experience. Target approximately 150 words. IMPORTANT: You must respond with ONLY valid JSON - no additional text, no markdown, no explanations.",
           },
           {
             role: "user",
@@ -224,7 +228,7 @@ Key experience to highlight:
           },
         ],
         temperature: 0.7,
-        max_tokens: 500
+        max_tokens: 800
       });
       console.log(`[${new Date().toISOString()}] Cover letter generation completed`);
 
