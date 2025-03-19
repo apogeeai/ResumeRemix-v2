@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { ArrowRight, CheckCircle2, FileText, Sparkles, Target } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
+import { SparklesCore } from '@/components/ui/sparkles';
 
 export default function Home() {
   return (
@@ -9,25 +10,39 @@ export default function Home() {
       <div className="gradient-bg" />
       <div className="content-container">
         <main className="min-h-screen overflow-hidden">
-          {/* Hero Section */}
-          <section className="py-24 md:py-36 relative">
+          {/* Hero Section with Sparkles */}
+          <section className="h-[40rem] w-full bg-black flex flex-col items-center justify-center overflow-hidden relative">
+            {/* Purple Gradients */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
               <div className="absolute w-[500px] h-[500px] -right-40 -top-40 bg-primary/20 rounded-full blur-3xl" />
               <div className="absolute w-[500px] h-[500px] -left-40 -bottom-40 bg-accent/20 rounded-full blur-3xl" />
             </div>
-            <div className="container mx-auto px-4">
+            {/* Particles */}
+            <div className="w-full absolute inset-0 h-full">
+              <SparklesCore
+                id="tsparticlesfullpage"
+                background="transparent"
+                minSize={0.6}
+                maxSize={1.4}
+                particleDensity={100}
+                className="w-full h-full"
+                particleColor="#FFFFFF"
+                speed={1}
+              />
+            </div>
+            <div className="container mx-auto px-4 relative z-20">
               <div className="max-w-4xl mx-auto text-center space-y-8">
                 <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border border-primary/20 mb-4 hover-glow">
                   <Sparkles className="h-4 w-4 text-primary" />
                   <span className="text-sm">AI-Powered Resume Optimization</span>
                 </div>
-                <h1 className="text-4xl md:text-7xl font-bold tracking-tight font-roboto text-glow">
+                <h1 className="text-4xl md:text-7xl font-bold tracking-tight font-roboto text-white">
                   Land Your Dream Job with an{' '}
                   <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent-foreground">
                     AI-Optimized Resume
                   </span>
                 </h1>
-                <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+                <p className="text-xl text-neutral-300 max-w-2xl mx-auto">
                   Transform your resume into an ATS-friendly masterpiece tailored perfectly for each job application using advanced AI technology.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -42,10 +57,21 @@ export default function Home() {
                 </div>
               </div>
             </div>
+            {/* Laser Line Effect */}
+            <div className="w-[40rem] h-40 relative mt-8">
+              {/* Gradients */}
+              <div className="absolute inset-x-20 top-0 bg-gradient-to-r from-transparent via-indigo-500 to-transparent h-[2px] w-3/4 blur-sm" />
+              <div className="absolute inset-x-20 top-0 bg-gradient-to-r from-transparent via-indigo-500 to-transparent h-px w-3/4" />
+              <div className="absolute inset-x-60 top-0 bg-gradient-to-r from-transparent via-sky-500 to-transparent h-[5px] w-1/4 blur-sm" />
+              <div className="absolute inset-x-60 top-0 bg-gradient-to-r from-transparent via-sky-500 to-transparent h-px w-1/4" />
+
+              {/* Radial Gradient to prevent sharp edges */}
+              <div className="absolute inset-0 w-full h-full bg-black [mask-image:radial-gradient(350px_200px_at_top,transparent_20%,white)]"></div>
+            </div>
           </section>
 
           {/* Features Section */}
-          <section id="features" className="py-20 relative">
+          <section id="features" className="py-20 relative bg-background">
             <div className="container mx-auto px-4 relative">
               <div className="text-center mb-16">
                 <h2 className="text-3xl md:text-4xl font-bold mb-4 font-roboto">
