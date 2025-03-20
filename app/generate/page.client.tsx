@@ -255,7 +255,7 @@ export default function GeneratorClient() {
             <div className="grid md:grid-cols-2 gap-8">
               {/* Left Column - Input */}
               <div className="space-y-6">
-                <Card className="p-6">
+                <Card className="p-6 bg-opacity-90">
                   <h3 className="text-lg font-semibold mb-4">Upload Resume</h3>
                   <div
                     {...getRootProps()}
@@ -292,17 +292,17 @@ export default function GeneratorClient() {
 
                   <Textarea
                     placeholder="Paste your resume text here..."
-                    className="min-h-[200px]"
+                    className="min-h-[200px] bg-opacity-90"
                     value={resumeText}
                     onChange={(e) => setResumeText(e.target.value)}
                   />
                 </Card>
 
-                <Card className="p-6">
+                <Card className="p-6 bg-opacity-90">
                   <h3 className="text-lg font-semibold mb-4">Job Description</h3>
                   <Textarea
                     placeholder="Paste the job description here..."
-                    className="min-h-[200px]"
+                    className="min-h-[200px] bg-opacity-90"
                     value={jobDescription}
                     onChange={(e) => setJobDescription(e.target.value)}
                   />
@@ -332,7 +332,7 @@ export default function GeneratorClient() {
                     <TabsTrigger value="cover-letter">Cover Letter</TabsTrigger>
                   </TabsList>
                   <TabsContent value="resume">
-                    <Card className="p-6 min-h-[600px]">
+                    <Card className="p-6 min-h-[600px] bg-opacity-90">
                       {result ? (
                         <div className="space-y-6">
                           <div className="flex justify-between items-center">
@@ -570,7 +570,7 @@ export default function GeneratorClient() {
                     </Card>
                   </TabsContent>
                   <TabsContent value="cover-letter">
-                    <Card className="p-6 min-h-[600px]">
+                    <Card className="p-6 min-h-[600px] bg-opacity-90">
                       {result ? (
                         <div className="space-y-6">
                           <div className="prose max-w-none">

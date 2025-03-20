@@ -48,9 +48,56 @@ export default function Home() {
                       Try for Free <ArrowRight className="h-4 w-4 inline-block ml-2" />
                     </RainbowButton>
                   </Link>
-                  <Button size="lg" variant="outline" className="w-full sm:w-auto">
+                  <button className="group relative inline-flex h-11 cursor-pointer items-center justify-center rounded-xl border border-white bg-black px-8 py-2 font-medium text-white transition-all hover:bg-black/80 max-w-[185.56px] w-full mx-auto sm:mx-0">
                     Watch Demo
-                  </Button>
+                  </button>
+                </div>
+
+                {/* Logo Carousel */}
+                <div className="space-y-4 mt-[30px]">
+                  <h3 className="text-center text-lg text-muted-foreground pt-10">Used on Sites such as:</h3>
+                  <div className="w-full overflow-hidden sm:pt-0 z-10">
+                    <div className="relative flex max-w-[1220px] overflow-hidden py-5 mx-auto">
+                      <div className="flex w-max animate-marquee" style={{"--duration": "25s"} as React.CSSProperties}>
+                        <div className="relative h-full w-fit mx-8 flex items-center justify-start">
+                          <span className="text-foreground dark:text-white text-2xl font-semibold whitespace-nowrap">LinkedIn</span>
+                        </div>
+                        <div className="relative h-full w-fit mx-8 flex items-center justify-start">
+                          <span className="text-foreground dark:text-white text-2xl font-semibold whitespace-nowrap">Indeed</span>
+                        </div>
+                        <div className="relative h-full w-fit mx-8 flex items-center justify-start">
+                          <span className="text-foreground dark:text-white text-2xl font-semibold whitespace-nowrap">Monster</span>
+                        </div>
+                        <div className="relative h-full w-fit mx-8 flex items-center justify-start">
+                          <span className="text-foreground dark:text-white text-2xl font-semibold whitespace-nowrap">ZipRecruiter</span>
+                        </div>
+                        <div className="relative h-full w-fit mx-8 flex items-center justify-start">
+                          <span className="text-foreground dark:text-white text-2xl font-semibold whitespace-nowrap">Glassdoor</span>
+                        </div>
+                        <div className="relative h-full w-fit mx-8 flex items-center justify-start">
+                          <span className="text-foreground dark:text-white text-2xl font-semibold whitespace-nowrap">CareerBuilder</span>
+                        </div>
+                        <div className="relative h-full w-fit mx-8 flex items-center justify-start">
+                          <span className="text-foreground dark:text-white text-2xl font-semibold whitespace-nowrap">LinkedIn</span>
+                        </div>
+                        <div className="relative h-full w-fit mx-8 flex items-center justify-start">
+                          <span className="text-foreground dark:text-white text-2xl font-semibold whitespace-nowrap">Indeed</span>
+                        </div>
+                        <div className="relative h-full w-fit mx-8 flex items-center justify-start">
+                          <span className="text-foreground dark:text-white text-2xl font-semibold whitespace-nowrap">Monster</span>
+                        </div>
+                        <div className="relative h-full w-fit mx-8 flex items-center justify-start">
+                          <span className="text-foreground dark:text-white text-2xl font-semibold whitespace-nowrap">ZipRecruiter</span>
+                        </div>
+                        <div className="relative h-full w-fit mx-8 flex items-center justify-start">
+                          <span className="text-foreground dark:text-white text-2xl font-semibold whitespace-nowrap">Glassdoor</span>
+                        </div>
+                        <div className="relative h-full w-fit mx-8 flex items-center justify-start">
+                          <span className="text-foreground dark:text-white text-2xl font-semibold whitespace-nowrap">CareerBuilder</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -210,8 +257,8 @@ export default function Home() {
             </div>
           </section>
 
-          {/* Reviews Section */}
-          <section className="py-20 relative bg-background/5 backdrop-blur-xl bg-grid-small">
+          {/* Testimonials Section */}
+          <section id="testimonials" className="py-20 relative bg-background/5 backdrop-blur-xl bg-grid-small">
             <div className="absolute pointer-events-none inset-0 flex items-center justify-center bg-gradient-to-b from-background/80 via-background/20 to-background/80 [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
             <div className="container mx-auto px-4 relative max-w-[1220px]">
               <div className="text-center mb-16">
@@ -257,26 +304,11 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-
-              <div className="flex justify-center gap-4 mt-8">
-                <Button variant="outline" size="icon">
-                  <ArrowRight className="h-4 w-4 rotate-180" />
-                </Button>
-                <Button variant="outline" size="icon">
-                  <ArrowRight className="h-4 w-4" />
-                </Button>
-              </div>
-
-              <div className="text-center mt-12">
-                <p className="text-muted-foreground">
-                  Join thousands of satisfied job seekers who found their dream jobs with ResumeRemix
-                </p>
-              </div>
             </div>
           </section>
 
           {/* FAQ Section */}
-          <section className="py-20">
+          <section id="faq" className="py-20">
             <div className="container mx-auto px-4 max-w-[1220px]">
               <div className="text-center mb-16">
                 <h2 className="text-3xl md:text-4xl font-bold mb-4 font-roboto">
@@ -290,56 +322,47 @@ export default function Home() {
                   <div className="absolute inset-0 w-full h-[40%] [mask-image:radial-gradient(350px_100px_at_top,transparent_20%,white)]"></div>
                 </div>
                 <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-                  Everything you need to know about ResumeRemix. Can't find the answer you're looking for?{' '}
-                  <Link href="#" className="text-primary hover:underline">
-                    Contact our support team
-                  </Link>
-                  .
+                  Got questions? We've got answers.
                 </p>
               </div>
 
-              <div className="max-w-3xl mx-auto space-y-4">
-                {[
-                  {
-                    question: "What is ResumeRemix?",
-                    answer: "ResumeRemix is an AI-powered platform designed to help job seekers optimize their resumes for specific job applications. Our advanced AI technology analyzes job descriptions and tailors your resume to highlight the most relevant skills and experiences, ensuring maximum visibility with ATS (Applicant Tracking Systems)."
-                  },
-                  {
-                    question: "How does the AI resume optimization work?",
-                    answer: "Our AI analyzes both your resume and the target job description, identifying key requirements and matching them with your experience. It then suggests optimizations to improve ATS compatibility, enhance keyword matching, and strengthen your content. The process takes just minutes and provides specific recommendations for improvement."
-                  },
-                  {
-                    question: "Is ResumeRemix suitable for all career levels?",
-                    answer: "Absolutely! ResumeRemix is designed for job seekers at all career stages. Whether you're a recent graduate, mid-career professional, or senior executive, our AI adapts its recommendations to your experience level and industry standards."
-                  },
-                  {
-                    question: "What file formats are supported?",
-                    answer: "We support all major file formats including PDF, DOCX, and TXT. Our system can process your existing resume in any of these formats and export the optimized version in your preferred format, ensuring compatibility with all major job application systems."
-                  },
-                  {
-                    question: "Can I use ResumeRemix for multiple job applications?",
-                    answer: "Yes! With our Pro plan, you can optimize your resume for unlimited job applications. Each optimization is tailored to the specific job description, helping you create targeted versions of your resume for different opportunities."
-                  },
-                  {
-                    question: "How secure is my resume data?",
-                    answer: "We take data security seriously. All resume data is encrypted both in transit and at rest. We never share your personal information or resume content with third parties, and you have complete control over your data with the ability to delete it at any time."
-                  }
-                ].map((item, index) => (
-                  <div key={index} className="rounded-lg border p-4 hover:border-primary/50 transition-colors">
-                    <Accordion type="single" collapsible>
-                      <AccordionItem value={`item-${index}`} className="border-none">
-                        <AccordionTrigger className="hover:no-underline">
-                          <h3 className="text-lg font-semibold text-left">{item.question}</h3>
-                        </AccordionTrigger>
-                        <AccordionContent>
-                          <div className="text-muted-foreground">
-                            {item.answer}
-                          </div>
-                        </AccordionContent>
-                      </AccordionItem>
-                    </Accordion>
-                  </div>
-                ))}
+              <div className="max-w-3xl mx-auto">
+                <Accordion type="single" collapsible className="w-full">
+                  <AccordionItem value="item-1">
+                    <AccordionTrigger>How does ResumeRemix optimize my resume?</AccordionTrigger>
+                    <AccordionContent>
+                      ResumeRemix uses advanced AI technology to analyze your resume against job descriptions, identifying key requirements and optimizing your content to match. It ensures ATS compatibility, suggests improvements for readability, and helps highlight your most relevant skills and experiences.
+                    </AccordionContent>
+                  </AccordionItem>
+
+                  <AccordionItem value="item-2">
+                    <AccordionTrigger>Is my data secure?</AccordionTrigger>
+                    <AccordionContent>
+                      Yes, we take data security seriously. Your resume data is encrypted, processed securely, and never shared with third parties. We comply with GDPR and other privacy regulations to ensure your information remains confidential.
+                    </AccordionContent>
+                  </AccordionItem>
+
+                  <AccordionItem value="item-3">
+                    <AccordionTrigger>Can I use ResumeRemix for different industries?</AccordionTrigger>
+                    <AccordionContent>
+                      Absolutely! ResumeRemix is designed to work across all industries. Our AI adapts to specific industry requirements and terminology, ensuring your resume is optimized for your target role and sector.
+                    </AccordionContent>
+                  </AccordionItem>
+
+                  <AccordionItem value="item-4">
+                    <AccordionTrigger>How many resumes can I optimize?</AccordionTrigger>
+                    <AccordionContent>
+                      The number of resumes you can optimize depends on your plan. Free users get 1 optimization, while Pro users get unlimited optimizations. Check our pricing section for detailed plan features.
+                    </AccordionContent>
+                  </AccordionItem>
+
+                  <AccordionItem value="item-5">
+                    <AccordionTrigger>Do you offer refunds?</AccordionTrigger>
+                    <AccordionContent>
+                      Yes, we offer a 30-day money-back guarantee for all paid plans. If you're not satisfied with our service, contact our support team for a full refund.
+                    </AccordionContent>
+                  </AccordionItem>
+                </Accordion>
               </div>
             </div>
           </section>
