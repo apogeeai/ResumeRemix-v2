@@ -30,6 +30,22 @@ function generateCacheKey(resumeText: string, jobDescription: string): string {
   return createHash('sha256').update(combined).digest('hex');
 }
 
+// Add this helper function
+function formatCoverLetter(content: string): string {
+  // Find the signature line
+  const signatureIndex = content.indexOf('Sincerely,');
+  if (signatureIndex === -1) return content;
+
+  // Split the content into parts
+  const beforeSignature = content.slice(0, signatureIndex);
+  const afterSignature = content.slice(signatureIndex);
+
+  // Ensure single line break after "Sincerely,"
+  const formattedSignature = afterSignature.replace(/Sincerely,\s*/, 'Sincerely,\n');
+
+  return beforeSignature + formattedSignature;
+}
+
 export async function POST(req: Request) {
   const startTime = Date.now();
   console.log(`[${new Date().toISOString()}] Starting POST request processing...`);
@@ -256,6 +272,9 @@ Key experience to highlight:
         };
       }
 
+      // Format the cover letter with proper line breaks
+      const formattedCoverLetter = formatCoverLetter(coverLetterContent.coverLetter?.content || '');
+
       const result = {
         optimizedResume: {
           content: optimizedResumeContent.optimizedResume?.content || 'No content generated',
@@ -292,7 +311,7 @@ Key experience to highlight:
           },
           improvements: optimizedResumeContent.optimizedResume?.improvements || ['No specific improvements suggested']
         },
-        coverLetter: coverLetterContent.coverLetter?.content || 'No cover letter generated',
+        coverLetter: formattedCoverLetter,
         jobDescription,
         timestamp: new Date().toISOString(),
       };

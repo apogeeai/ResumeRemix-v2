@@ -9,15 +9,18 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: 'Content is required' }, { status: 400 });
     }
 
+    // Split content into paragraphs
+    const paragraphs = content.split('\n').filter(Boolean);
+
     // Create a new document
     const doc = new Document({
       sections: [{
         properties: {},
-        children: [
+        children: paragraphs.map((text: string) => 
           new Paragraph({
             children: [
               new TextRun({
-                text: content,
+                text: text.trim(),
                 size: 24, // 12pt
                 font: 'Aptos'
               })
@@ -28,7 +31,7 @@ export async function POST(req: Request) {
               after: 200 // Space after paragraph
             }
           })
-        ]
+        )
       }]
     });
 

@@ -4,19 +4,33 @@
 
 @layer utilities {
   .gradient-bg {
-    @apply fixed inset-0 min-h-screen w-full;
-    background: 
-      radial-gradient(circle at 0% 0%, hsl(var(--primary) / 0.15), transparent 50%),
-      radial-gradient(circle at 100% 0%, hsl(var(--accent) / 0.1), transparent 50%),
-      radial-gradient(circle at 100% 100%, hsl(var(--primary) / 0.1), transparent 50%),
-      radial-gradient(circle at 0% 100%, hsl(var(--accent) / 0.15), transparent 50%),
-      hsl(var(--background));
-    background-attachment: fixed;
-    background-size: 100% 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    z-index: -1;
+    background: radial-gradient(
+      circle at top center,
+      hsla(222, 80%, 60%, 0.2) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at bottom left,
+      hsla(280, 80%, 50%, 0.2) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at bottom right,
+      hsla(240, 80%, 50%, 0.2) 0%,
+      transparent 50%
+    );
   }
   
   .content-container {
-    @apply relative z-10;
+    position: relative;
+    z-index: 1;
   }
   
   .glass {
@@ -41,12 +55,76 @@
   .text-glow {
     text-shadow: 0 0 20px hsl(var(--primary) / 0.5);
   }
+
+  .animate-rotate-glow {
+    animation: rotate-glow 3s linear infinite;
+  }
+
+  .animate-rainbow {
+    animation: rainbow 8s linear infinite;
+  }
+
+  .animate-gradient {
+    background-size: 200% auto;
+    animation: gradient 8s linear infinite;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+
+  .text-glow-gradient {
+    text-shadow: 0 0 20px rgba(124, 58, 237, 0.2);
+  }
+}
+
+@keyframes rotate-glow {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rainbow {
+  from {
+    background-position: 0% center;
+  }
+  to {
+    background-position: -200% center;
+  }
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% center;
+  }
+  100% {
+    background-position: -200% center;
+  }
+}
+
+.bg-grid-white\[\0\.02\] {
+  background-size: 40px 40px;
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+}
+
+.bg-grid-small {
+  background-size: 20px 20px;
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
 }
 
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+  --color-1: 345 85% 55%;
+  --color-2: 45 93% 55%;
+  --color-3: 140 60% 50%;
+  --color-4: 185 85% 45%;
+  --color-5: 240 85% 55%;
 }
 
 @media (prefers-color-scheme: dark) {
