@@ -7,7 +7,7 @@ import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 export function SiteHeader() {
   return (
     <header className="sticky top-0 z-50 glass border-b border-primary/20 backdrop-blur-lg">
-      <div className="container mx-auto px-4 py-4 flex justify-between items-center max-w-[1120px]">
+      <div className="container mx-auto px-4 py-4 flex justify-between items-center max-w-[1220px]">
         <div className="flex items-center gap-2">
           <Link href="/" className="flex items-center gap-2">
             <FileText className="h-6 w-6 text-primary" />

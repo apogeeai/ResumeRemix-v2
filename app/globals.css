@@ -199,3 +199,10 @@
     @apply bg-background text-foreground;
   }
 }
+
+@media (min-width: 768px) {
+  .md\:py-36 {
+    padding-top: 8rem;
+    padding-bottom: 9rem;
+  }
+}

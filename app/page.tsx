@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { SparklesCore } from '@/components/ui/sparkles';
 import { RainbowButton } from '@/components/ui/rainbow-button';
+import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '@/components/ui/accordion';
 
 export default function Home() {
   return (
@@ -26,7 +27,7 @@ export default function Home() {
                 speed={1}
               />
             </div>
-            <div className="container mx-auto px-4 relative z-20 max-w-[1152px]">
+            <div className="container mx-auto px-4 relative z-20 max-w-[1220px]">
               <div className="max-w-4xl mx-auto text-center space-y-8">
                 <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border border-primary/20 mb-4 hover-glow">
                   <Sparkles className="h-4 w-4 text-primary" />
@@ -56,21 +57,21 @@ export default function Home() {
           </section>
 
           {/* Features Section */}
-          <section id="features" className="py-20 relative bg-[hsl(270,5%,10%)] bg-grid-small relative">
-            <div className="absolute pointer-events-none inset-0 flex items-center justify-center bg-[hsl(270,5%,10%)] [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
-            <div className="container mx-auto px-4 relative max-w-[1152px]">
+          <section id="features" className="py-20 relative bg-background/5 backdrop-blur-xl bg-grid-small relative">
+            <div className="absolute pointer-events-none inset-0 flex items-center justify-center bg-gradient-to-b from-background/80 via-background/20 to-background/80 [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
+            <div className="container mx-auto px-4 relative max-w-[1220px]">
               <div className="text-center">
                 <h2 className="text-3xl md:text-4xl font-bold mb-4 font-roboto">
                   Why Choose ResumeRemix
                 </h2>
                 
                 {/* Laser Line Effect */}
-                <div className="w-[40rem] h-10 relative mx-auto">
+                <div className="w-[40rem] h-6 relative mx-auto mb-2">
                   <div className="absolute inset-x-20 top-0 bg-gradient-to-r from-transparent via-indigo-500 to-transparent h-[2px] w-3/4 blur-sm" />
                   <div className="absolute inset-x-20 top-0 bg-gradient-to-r from-transparent via-indigo-500 to-transparent h-px w-3/4" />
                   <div className="absolute inset-x-60 top-0 bg-gradient-to-r from-transparent via-sky-500 to-transparent h-[5px] w-1/4 blur-sm" />
                   <div className="absolute inset-x-60 top-0 bg-gradient-to-r from-transparent via-sky-500 to-transparent h-px w-1/4" />
-                  <div className="absolute inset-0 w-full h-[50%] bg-[hsl(270,5%,10%)] [mask-image:radial-gradient(350px_200px_at_top,transparent_20%,white)]"></div>
+                  <div className="absolute inset-0 w-full h-[40%] [mask-image:radial-gradient(350px_100px_at_top,transparent_20%,white)]"></div>
                 </div>
 
                 <p className="text-muted-foreground text-lg max-w-2xl mx-auto mt-4">
@@ -123,11 +124,18 @@ export default function Home() {
 
           {/* Pricing Section */}
           <section id="pricing" className="py-20">
-            <div className="container mx-auto px-4 max-w-[1152px]">
+            <div className="container mx-auto px-4 max-w-[1220px]">
               <div className="text-center mb-16">
                 <h2 className="text-3xl md:text-4xl font-bold mb-4 font-roboto">
                   Simple, Transparent Pricing
                 </h2>
+                <div className="w-[40rem] h-6 relative mx-auto mb-2">
+                  <div className="absolute inset-x-20 top-0 bg-gradient-to-r from-transparent via-indigo-500 to-transparent h-[2px] w-3/4 blur-sm"></div>
+                  <div className="absolute inset-x-20 top-0 bg-gradient-to-r from-transparent via-indigo-500 to-transparent h-px w-3/4"></div>
+                  <div className="absolute inset-x-60 top-0 bg-gradient-to-r from-transparent via-sky-500 to-transparent h-[5px] w-1/4 blur-sm"></div>
+                  <div className="absolute inset-x-60 top-0 bg-gradient-to-r from-transparent via-sky-500 to-transparent h-px w-1/4"></div>
+                  <div className="absolute inset-0 w-full h-[40%] [mask-image:radial-gradient(350px_100px_at_top,transparent_20%,white)]"></div>
+                </div>
                 <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
                   Choose the plan that works best for your job search needs.
                 </p>
@@ -202,9 +210,143 @@ export default function Home() {
             </div>
           </section>
 
+          {/* Reviews Section */}
+          <section className="py-20 relative bg-background/5 backdrop-blur-xl bg-grid-small">
+            <div className="absolute pointer-events-none inset-0 flex items-center justify-center bg-gradient-to-b from-background/80 via-background/20 to-background/80 [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
+            <div className="container mx-auto px-4 relative max-w-[1220px]">
+              <div className="text-center mb-16">
+                <h2 className="text-3xl md:text-4xl font-bold mb-4 font-roboto">
+                  Loved by Job Seekers Worldwide
+                </h2>
+                <div className="w-[40rem] h-6 relative mx-auto mb-2">
+                  <div className="absolute inset-x-20 top-0 bg-gradient-to-r from-transparent via-indigo-500 to-transparent h-[2px] w-3/4 blur-sm"></div>
+                  <div className="absolute inset-x-20 top-0 bg-gradient-to-r from-transparent via-indigo-500 to-transparent h-px w-3/4"></div>
+                  <div className="absolute inset-x-60 top-0 bg-gradient-to-r from-transparent via-sky-500 to-transparent h-[5px] w-1/4 blur-sm"></div>
+                  <div className="absolute inset-x-60 top-0 bg-gradient-to-r from-transparent via-sky-500 to-transparent h-px w-1/4"></div>
+                  <div className="absolute inset-0 w-full h-[40%] [mask-image:radial-gradient(350px_100px_at_top,transparent_20%,white)]"></div>
+                </div>
+                <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+                  See what our users have to say about their experience with ResumeRemix.
+                </p>
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                <div className="p-8 rounded-xl glass border border-primary/20 hover-glow">
+                  <div className="flex gap-1 text-primary mb-4">
+                    {"★".repeat(5)}
+                  </div>
+                  <p className="text-lg mb-6">
+                    "ResumeRemix transformed my job search completely. The AI-powered optimization helped my resume stand out, and I landed interviews at top companies. The ATS optimization feature is a game-changer!"
+                  </p>
+                  <div>
+                    <div className="font-semibold">Alex Johnson</div>
+                    <div className="text-muted-foreground">Software Engineer, hired at Google</div>
+                  </div>
+                </div>
+
+                <div className="p-8 rounded-xl glass border border-primary/20 hover-glow">
+                  <div className="flex gap-1 text-primary mb-4">
+                    {"★".repeat(5)}
+                  </div>
+                  <p className="text-lg mb-6">
+                    "As a recent graduate, I was struggling to get callbacks. ResumeRemix helped me tailor my resume for each application, and within weeks I received multiple interview invitations. Now I have my dream job!"
+                  </p>
+                  <div>
+                    <div className="font-semibold">Sarah Chen</div>
+                    <div className="text-muted-foreground">Marketing Specialist, hired at Meta</div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex justify-center gap-4 mt-8">
+                <Button variant="outline" size="icon">
+                  <ArrowRight className="h-4 w-4 rotate-180" />
+                </Button>
+                <Button variant="outline" size="icon">
+                  <ArrowRight className="h-4 w-4" />
+                </Button>
+              </div>
+
+              <div className="text-center mt-12">
+                <p className="text-muted-foreground">
+                  Join thousands of satisfied job seekers who found their dream jobs with ResumeRemix
+                </p>
+              </div>
+            </div>
+          </section>
+
+          {/* FAQ Section */}
+          <section className="py-20">
+            <div className="container mx-auto px-4 max-w-[1220px]">
+              <div className="text-center mb-16">
+                <h2 className="text-3xl md:text-4xl font-bold mb-4 font-roboto">
+                  Frequently Asked Questions
+                </h2>
+                <div className="w-[40rem] h-6 relative mx-auto mb-2">
+                  <div className="absolute inset-x-20 top-0 bg-gradient-to-r from-transparent via-indigo-500 to-transparent h-[2px] w-3/4 blur-sm"></div>
+                  <div className="absolute inset-x-20 top-0 bg-gradient-to-r from-transparent via-indigo-500 to-transparent h-px w-3/4"></div>
+                  <div className="absolute inset-x-60 top-0 bg-gradient-to-r from-transparent via-sky-500 to-transparent h-[5px] w-1/4 blur-sm"></div>
+                  <div className="absolute inset-x-60 top-0 bg-gradient-to-r from-transparent via-sky-500 to-transparent h-px w-1/4"></div>
+                  <div className="absolute inset-0 w-full h-[40%] [mask-image:radial-gradient(350px_100px_at_top,transparent_20%,white)]"></div>
+                </div>
+                <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+                  Everything you need to know about ResumeRemix. Can't find the answer you're looking for?{' '}
+                  <Link href="#" className="text-primary hover:underline">
+                    Contact our support team
+                  </Link>
+                  .
+                </p>
+              </div>
+
+              <div className="max-w-3xl mx-auto space-y-4">
+                {[
+                  {
+                    question: "What is ResumeRemix?",
+                    answer: "ResumeRemix is an AI-powered platform designed to help job seekers optimize their resumes for specific job applications. Our advanced AI technology analyzes job descriptions and tailors your resume to highlight the most relevant skills and experiences, ensuring maximum visibility with ATS (Applicant Tracking Systems)."
+                  },
+                  {
+                    question: "How does the AI resume optimization work?",
+                    answer: "Our AI analyzes both your resume and the target job description, identifying key requirements and matching them with your experience. It then suggests optimizations to improve ATS compatibility, enhance keyword matching, and strengthen your content. The process takes just minutes and provides specific recommendations for improvement."
+                  },
+                  {
+                    question: "Is ResumeRemix suitable for all career levels?",
+                    answer: "Absolutely! ResumeRemix is designed for job seekers at all career stages. Whether you're a recent graduate, mid-career professional, or senior executive, our AI adapts its recommendations to your experience level and industry standards."
+                  },
+                  {
+                    question: "What file formats are supported?",
+                    answer: "We support all major file formats including PDF, DOCX, and TXT. Our system can process your existing resume in any of these formats and export the optimized version in your preferred format, ensuring compatibility with all major job application systems."
+                  },
+                  {
+                    question: "Can I use ResumeRemix for multiple job applications?",
+                    answer: "Yes! With our Pro plan, you can optimize your resume for unlimited job applications. Each optimization is tailored to the specific job description, helping you create targeted versions of your resume for different opportunities."
+                  },
+                  {
+                    question: "How secure is my resume data?",
+                    answer: "We take data security seriously. All resume data is encrypted both in transit and at rest. We never share your personal information or resume content with third parties, and you have complete control over your data with the ability to delete it at any time."
+                  }
+                ].map((item, index) => (
+                  <div key={index} className="rounded-lg border p-4 hover:border-primary/50 transition-colors">
+                    <Accordion type="single" collapsible>
+                      <AccordionItem value={`item-${index}`} className="border-none">
+                        <AccordionTrigger className="hover:no-underline">
+                          <h3 className="text-lg font-semibold text-left">{item.question}</h3>
+                        </AccordionTrigger>
+                        <AccordionContent>
+                          <div className="text-muted-foreground">
+                            {item.answer}
+                          </div>
+                        </AccordionContent>
+                      </AccordionItem>
+                    </Accordion>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+
           {/* Footer Section */}
           <footer className="py-12 bg-[#0f0d12]">
-            <div className="container mx-auto px-4 max-w-[1152px]">
+            <div className="container mx-auto px-4 max-w-[1220px]">
               <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
                 <div>
                   <h3 className="text-lg font-semibold mb-4">Product</h3>
